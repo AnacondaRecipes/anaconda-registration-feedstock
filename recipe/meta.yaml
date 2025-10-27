@@ -8,22 +8,32 @@ package:
 build:
   number: 0
   noarch: generic
+  script: |
+    mkdir %PREFIX%\condarc.d  # [win]
+    mkdir $PREFIX/condarc.d   # [not win]
+    copy %RECIPE_DIR%\registration.yml %PREFIX%\condarc.d\  # [win]
+    cp $RECIPE_DIR/registration.yml $PREFIX/condarc.d/     # [not win]
 
 requirements:
   run:
     - anaconda-anon-usage >=0.7.2
-    - anaconda-auth
+    - anaconda-auth >=0.9.1
 
 test:
   imports:
     - anaconda_anon_usage
     - anaconda_auth
+  commands:
+    - if not exist %PREFIX%\condarc.d\registration.yml exit 1  # [win]
+    - test -f $PREFIX/condarc.d/registration.yml               # [not win]
 
 about:
   home: https://github.com/AnacondaRecipes/anaconda-registration-feedstock
-  summary: A metapackage to ensure that the dependencies for conda registration are installed and active
+  summary: A metapackage to facilitate conda registration
   description: |
     A metapackage to ensure that the dependencies for conda registration are installed
+    and anaconda-anon-usage telemetry is enabled. This provides a convenient method to
+    ensure that 
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
