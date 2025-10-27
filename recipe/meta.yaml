@@ -12,11 +12,11 @@ build:
     mkdir %PREFIX%\condarc.d  # [win]
     mkdir $PREFIX/condarc.d   # [not win]
     copy %RECIPE_DIR%\registration.yml %PREFIX%\condarc.d\  # [win]
-    cp $RECIPE_DIR/registration.yml $PREFIX/condarc.d/     # [not win]
+    cp $RECIPE_DIR/registration.yml $PREFIX/condarc.d/      # [not win]
 
 requirements:
   run:
-    - anaconda-anon-usage >=0.7.2
+    - anaconda-anon-usage >=0.7.4
     - anaconda-auth >=0.9.1
 
 test:
