@@ -1,5 +1,5 @@
 {% set name = "anaconda-registration" %}
-{% set version = "0.1" %}
+{% set version = "0.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -16,8 +16,8 @@ requirements:
 
 test:
   imports:
-    - anaconda-anon-usage
-    - anaconda-auth
+    - anaconda_anon_usage
+    - anaconda_auth
 
 about:
   home: https://github.com/AnacondaRecipes/anaconda-registration-feedstock
