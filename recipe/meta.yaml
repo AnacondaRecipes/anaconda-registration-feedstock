@@ -1,0 +1,35 @@
+{% set name = "anaconda-registration" %}
+{% set version = "0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+build:
+  number: 0
+  noarch: generic
+
+requirements:
+  run:
+    - anaconda-anon-usage >=0.7.2
+    - anaconda-auth
+
+test:
+  imports:
+    - anaconda-anon-usage
+    - anaconda-auth
+
+about:
+  home: https://github.com/AnacondaRecipes/anaconda-registration-feedstock
+  summary: A metapackage to ensure that the dependencies for conda registration are installed and active
+  description: |
+    A metapackage to ensure that the dependencies for conda registration are installed
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  dev_url: https://github.com/AnacondaRecipes/anaconda-registration-feedstock
+  doc_url: https://github.com/AnacondaRecipes/anaconda-registration-feedstock
+
+extra:
+  recipe-maintainers:
+    - mcg1969
